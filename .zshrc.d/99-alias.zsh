@@ -4,10 +4,18 @@ alias la="ls -lah"
 alias nf="neofetch"
 alias cls=clear
 
-alias u="sudo apt update && sudo apt upgrade -y"
-alias i="sudo apt install -y"
-alias p="sudo apt purge --autoremove -y"
-alias s="sudo apt search"
+if [[ -r /etc/arch-release ]]; then
+	alias u="yay -Syyu"
+	alias i="yay -S"
+	alias p="yay -R"
+	alias s="yay"
+elif [[ -r /etc/os-release ]] && grep -q Ubuntu < /etc/os-release; then
+	alias u="sudo apt update && sudo apt upgrade -y"
+	alias i="sudo apt install -y"
+	alias p="sudo apt purge --autoremove -y"
+	alias s="sudo apt search"
+fi
+
 
 alias t="tmux"
 alias ta="tmux attach"
