@@ -23,8 +23,9 @@ alias tk="tmux kill-server"
 alias tl="tmux ls"
 
 alias vz="vim ~/.zshrc"
-alias va="vim ~/.zshrc.d/99-alias.zsh"
 alias ve="vim ~/.zshrc.d/00-env.zsh"
+alias va="vim ~/.zshrc.d/99-alias.zsh"
+alias vb="vim ~/.zshrc.d/99-bind.zsh"
 
 alias svim="sudoedit"
 alias vx="vim ~/.vnc/xstartup"
