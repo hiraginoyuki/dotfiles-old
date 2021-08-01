@@ -1,4 +1,3 @@
-source "$HOME/.zkbd/xterm-256color-:0"
 unsetopt MULTIBYTE
 
 bindkey  ${key[Home]}   beginning-of-line
