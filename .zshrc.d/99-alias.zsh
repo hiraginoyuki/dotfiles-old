@@ -1,3 +1,4 @@
+alias cdf="cd ~/.dotfiles"
 alias ":q"=exit
 alias reload="exec zsh"
 alias la="ls -lah"
