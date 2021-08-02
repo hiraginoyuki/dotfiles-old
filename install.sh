@@ -1,10 +1,13 @@
 DOTPATH=~/.dotfiles
 
-for f in .??*
-do
-	[ "$f" = ".git"       ] && continue
-	[ "$f" = ".gitignore" ] && continue
+entries="\
+	.zshrc \
+	.zshrc.d \
+	.config/nvim \
+"
 
+for f in $entries
+do
 	ln -snfv "$DOTPATH/$f" "$HOME"/"$f"
 done
 
