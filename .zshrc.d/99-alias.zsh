@@ -4,6 +4,7 @@ alias reload="exec zsh"
 alias la="ls -lah"
 alias nf="neofetch"
 alias cls=clear
+alias cb="xsel --clipboard --input"
 
 if [[ -r /etc/arch-release ]]; then
 	alias u="yay -Syyu"
