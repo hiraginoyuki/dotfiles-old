@@ -7,10 +7,19 @@ alias cls=clear
 alias cb="xsel --clipboard --input"
 
 if [[ -r /etc/arch-release ]]; then
-	alias u="yay -Syyu"
-	alias i="yay -S"
-	alias p="yay -R"
-	alias s="yay"
+  pacmans=(paru yay aurman yaourt pacman)
+  pacman=false
+  for p in $pacmans; do
+    if type $p > /dev/null; then
+      pacman=$p
+      break
+    fi
+  done
+
+	alias u="$pacman -Syyu"
+	alias i="$pacman -S"
+	alias p="$pacman -R"
+	alias s="$pacman"
 elif [[ -r /etc/os-release ]] && grep -q Ubuntu < /etc/os-release; then
 	alias u="sudo apt update && sudo apt upgrade -y"
 	alias i="sudo apt install -y"
