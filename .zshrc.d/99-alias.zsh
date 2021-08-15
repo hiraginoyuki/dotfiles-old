@@ -7,14 +7,14 @@ alias cls=clear
 alias cb="xsel --clipboard --input"
 
 if [[ -r /etc/arch-release ]]; then
-  pacmans=(paru yay aurman yaourt pacman)
-  pacman=false
-  for p in $pacmans; do
-    if type $p > /dev/null; then
-      pacman=$p
-      break
-    fi
-  done
+  pacmans=(paru yay aurman pacman)
+  pacman=$(
+    for p in $pacmans; do
+      if type $p > /dev/null; then
+        echo $p; break;
+      fi
+    done
+  )
 
 	alias u="$pacman -Syyu"
 	alias i="$pacman -S"
