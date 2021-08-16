@@ -4,6 +4,7 @@ entries="\
 	.zshrc \
 	.zshrc.d \
 	.config/nvim \
+  .gitconfig \
 "
 
 for f in $entries
