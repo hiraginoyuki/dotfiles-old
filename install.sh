@@ -4,13 +4,14 @@ entries="\
 	.zshrc \
 	.zshrc.d \
 	.config/nvim \
-  .gitconfig \
+	.gitconfig \
 "
 
 for f in $entries; do
-  if echo $f | grep -q '/'; then
-    mkdir -p $(echo $f | sed -r 's/\/[^\/]+$//')
-  fi
+	parent_dir=$(dirname $HOME/$f)
+	if [[ ! -e $parent_dir ]]; then
+		mkdir -p $parent_dir
+	fi
 	ln -snfv "$DOTPATH/$f" "$HOME"/"$f"
 done
 
