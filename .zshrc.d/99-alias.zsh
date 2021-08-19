@@ -5,6 +5,7 @@ alias la="ls -lah"
 alias nf="neofetch"
 alias cls=clear
 alias cb="xsel --clipboard --input"
+alias dc=docker-compose
 
 if [[ -r /etc/arch-release ]]; then
   pacmans=(paru yay aurman pacman)
