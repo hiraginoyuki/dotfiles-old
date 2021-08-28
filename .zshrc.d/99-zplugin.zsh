@@ -6,6 +6,7 @@ zinit snippet OMZL::prompt_info_functions.zsh
 zinit snippet OMZL::spectrum.zsh
 zinit snippet OMZP::git
 zinit snippet OMZP::history-substring-search
+zinit snippet OMZP::vi-mode
 zinit cdclear -q
 setopt promptsubst
 
