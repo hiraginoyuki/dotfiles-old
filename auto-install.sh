@@ -1,6 +1,6 @@
 git clone https://github.com/HiraginoYuki/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ./install.sh
-alias reload="exec zsh"
-echo "Type 'reload' to reload your shell, have fun!"
-
+echo "Type 'exec zsh' to reload your shell and have fun!"
+echo "Note: 'source .zshrc' is deprecated. for more reason, visit:"
+echo "https://blog.mattclemente.com/2020/06/26/oh-my-zsh-slow-to-load.html"
