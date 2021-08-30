@@ -18,6 +18,7 @@ if [[ -r /etc/arch-release ]]; then
   done
   if [[ $aur = pacman ]]; then
     echo "Using pacman, as no AUR helper was found."
+    aur="sudo $aur"
   fi
 
   alias u="${aur} -Syyu"
