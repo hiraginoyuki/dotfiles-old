@@ -8,24 +8,27 @@ alias cb="xsel --clipboard --input"
 alias dc=docker-compose
 
 if [[ -r /etc/arch-release ]]; then
-  pacmans=(paru yay aurman pacman)
-  pacman=$(
-    for p in $pacmans; do
-      if type $p > /dev/null; then
-        echo $p; break;
-      fi
-    done
-  )
+  aur_helpers=(aurman aurutils pakku pikaur trizen yay paru bauerbill pkgbuilder aura repofish wrapaur aurget pacman)
 
-	alias u="$pacman -Syyu"
-	alias i="$pacman -S"
-	alias p="$pacman -R"
-	alias s="$pacman"
+  for helper in $aur_helpers; do
+    if type $helper > /dev/null; then
+      aur=$helper
+      break
+    fi
+  done
+  if [[ $aur = pacman ]]; then
+    echo "Using pacman, as no AUR helper was found."
+  fi
+
+  alias u="${aur} -Syyu"
+  alias i="${aur} -S"
+  alias p="${aur} -R"
+  alias s="${aur} -Ss"
 elif [[ -r /etc/os-release ]] && grep -q Ubuntu < /etc/os-release; then
-	alias u="sudo apt update && sudo apt upgrade -y"
-	alias i="sudo apt install -y"
-	alias p="sudo apt purge --autoremove -y"
-	alias s="sudo apt search"
+  alias u="sudo apt update && sudo apt upgrade -y"
+  alias i="sudo apt install -y"
+  alias p="sudo apt purge --autoremove -y"
+  alias s="sudo apt search"
 fi
 
 
