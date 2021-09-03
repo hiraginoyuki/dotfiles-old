@@ -24,7 +24,7 @@ if [[ -r /etc/arch-release ]]; then
   alias u="${aur} -Syyu"
   alias i="${aur} -S"
   alias p="${aur} -R"
-  alias s="${aur} -Ss"
+  alias s="${aur}"
 elif [[ -r /etc/os-release ]] && grep -q Ubuntu < /etc/os-release; then
   alias u="sudo apt update && sudo apt upgrade -y"
   alias i="sudo apt install -y"
