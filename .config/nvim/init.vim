@@ -9,9 +9,18 @@ call plug#begin("~/.config/nvim/plugins")
   Plug 'lambdalisue/suda.vim'
 call plug#end()
 
+set number
+set relativenumber
 set expandtab
 set tabstop=2
 set shiftwidth=2
+
+autocmd VimEnter * if 0 == argc() | NERDTree | endif
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+:augroup END
 
 nnoremap dd "_dd
 vnoremap dd "_dd
