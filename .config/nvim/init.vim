@@ -9,6 +9,7 @@ call plug#begin("~/.config/nvim/plugins")
   Plug 'lambdalisue/suda.vim'
 call plug#end()
 
+set mouse=a
 set number
 set relativenumber
 set expandtab

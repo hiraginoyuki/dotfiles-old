@@ -4,6 +4,7 @@ alias reload="exec zsh"
 alias la="ls -lah"
 alias nf="neofetch"
 alias cls=clear
+alias clsls="clear && ls"
 alias cb="xsel --clipboard --input"
 alias dc=docker-compose
 
