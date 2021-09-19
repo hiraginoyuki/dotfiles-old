@@ -8,6 +8,11 @@ alias clsls="clear && ls"
 alias cb="xsel --clipboard --input"
 alias dc=docker-compose
 
+sudo=sudo
+if type doas > /dev/null; then
+  sudo=doas
+fi
+
 if [[ -r /etc/arch-release ]]; then
   aur_helpers=(aurman aurutils pakku pikaur trizen yay paru bauerbill pkgbuilder aura repofish wrapaur aurget pacman)
 
@@ -19,18 +24,18 @@ if [[ -r /etc/arch-release ]]; then
   done
   if [[ $aur = pacman ]]; then
     echo "Using pacman, as no AUR helper was found."
-    aur="sudo $aur"
+    aur="$sudo $aur"
   fi
 
   alias u="${aur} -Syyu"
   alias i="${aur} -S"
   alias p="${aur} -R"
   alias s="${aur}"
-elif [[ -r /etc/os-release ]] && grep -q Ubuntu < /etc/os-release; then
-  alias u="sudo apt update && sudo apt upgrade -y"
-  alias i="sudo apt install -y"
-  alias p="sudo apt purge --autoremove -y"
-  alias s="sudo apt search"
+elif [[ -r /etc/os-release ]] && grep -q debian < /etc/os-release; then
+  alias u="$sudo apt update && $sudo apt upgrade -y"
+  alias i="$sudo apt install -y"
+  alias p="$sudo apt purge --autoremove -y"
+  alias s="$sudo apt search"
 fi
 
 
