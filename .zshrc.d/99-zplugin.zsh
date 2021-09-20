@@ -15,7 +15,6 @@ zplugin load zdharma/fast-syntax-highlighting
 
 zinit snippet OMZP::git
 zinit snippet OMZP::history
-zinit snippet OMZP::vi-mode
 
 zinit snippet OMZT::af-magic.zsh-theme
 
