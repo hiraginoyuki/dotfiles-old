@@ -3,8 +3,8 @@ DOTPATH=~/.dotfiles
 entries="\
 	.zshrc \
 	.zshrc.d \
+	.tmux.conf \
 	.config/nvim \
-	.gitconfig \
 "
 
 for f in $entries; do
