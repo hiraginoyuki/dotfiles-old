@@ -31,7 +31,7 @@ if [[ -r /etc/arch-release ]]; then
   alias i="${aur} -S"
   alias p="${aur} -R"
   alias s="${aur}"
-elif [[ -r /etc/os-release ]] && grep -q debian etc/os-release; then
+elif [[ -r /etc/os-release ]] && grep -q debian /etc/os-release; then
   alias u="$sudo apt update && $sudo apt upgrade -y"
   alias i="$sudo apt install -y"
   alias p="$sudo apt purge --autoremove -y"
