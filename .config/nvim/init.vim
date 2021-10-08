@@ -11,18 +11,28 @@ call plug#end()
 
 set mouse=a
 set number
-set relativenumber
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set termguicolors
+set scrolloff=2
 
-autocmd VimEnter * if 0 == argc() | NERDTree | endif
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-:augroup END
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+let g:indent_guides_enable_on_vim_startup = 1
 
-nnoremap dd "_dd
-vnoremap dd "_dd
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
 
