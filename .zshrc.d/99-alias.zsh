@@ -8,6 +8,10 @@ alias clsls="clear && ls"
 alias cb="xsel --clipboard --input"
 alias dc=docker-compose
 
+for i in {1..99}; do
+  alias "awk$i=awk '{print \$$i}'"
+done
+
 sudo=sudo
 if type doas > /dev/null; then
   sudo=doas
