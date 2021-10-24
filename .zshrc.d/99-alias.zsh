@@ -12,6 +12,10 @@ for i in {1..99}; do
   alias "awk$i=awk '{print \$$i}'"
 done
 
+if type els > /dev/null; then
+  alias ls=els
+fi
+
 sudo=sudo
 if type doas > /dev/null; then
   sudo=doas
