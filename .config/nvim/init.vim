@@ -7,6 +7,7 @@ call plug#begin("~/.config/nvim/plugins")
   Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'preservim/nerdtree'
   Plug 'lambdalisue/suda.vim'
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 set mouse=a
@@ -35,4 +36,9 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
+
+noremap <up> <C-w><up>
+noremap <down> <C-w><down>
+noremap <left> <C-w><left>
+noremap <right> <C-w><right>
 
