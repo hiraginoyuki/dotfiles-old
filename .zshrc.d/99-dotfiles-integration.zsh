@@ -1,6 +1,4 @@
-function dfu {
-  zsh -c "\
-    cd ~/.dotfiles && \
-    git pull"
-}
+alias cdf="cd ~/.dotfiles"
+alias dfu="zsh -c 'cd ~/.dotfiles && git pull'"
+
 
