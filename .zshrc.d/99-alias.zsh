@@ -1,4 +1,3 @@
-alias cdf="cd ~/.dotfiles"
 alias ":q"=exit
 alias reload="exec zsh"
 alias la="ls -lah"
@@ -11,10 +10,6 @@ alias dc=docker-compose
 for i in {1..99}; do
   alias "awk$i=awk '{print \$$i}'"
 done
-
-if type els > /dev/null; then
-  alias ls=els
-fi
 
 sudo=sudo
 if type doas > /dev/null; then
@@ -50,7 +45,6 @@ elif [[ -r /etc/os-release ]] && grep -q fedora /etc/os-release; then
   alias p="$sudo dnf erase -y"
   alias s="$sudo dnf search"
 fi
-
 
 alias t="tmux"
 alias ta="tmux attach"
