@@ -20,8 +20,10 @@ if [[ -d ~/.dvm ]]; then
   export PATH="$PATH:$DVM_DIR/bin"
 fi
 
-land_aliases=( aleph )
-for cmd in $land_aliases; do
-  alias "$cmd=land $cmd"
-done
+if type aleph > /dev/null; then
+  land_aliases=( aleph )
+  for cmd in $land_aliases; do
+    alias "$cmd=land $cmd"
+  done
+fi
 
