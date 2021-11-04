@@ -6,6 +6,7 @@ alias cls=clear
 alias clsls="clear && ls"
 alias cb="xsel --clipboard --input"
 alias dc=docker-compose
+alias dog=cat
 
 for i in {1..99}; do
   alias "awk$i=awk '{print \$$i}'"
