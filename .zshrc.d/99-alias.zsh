@@ -1,6 +1,8 @@
 alias ":q"=exit
 alias reload="exec zsh"
 alias la="ls -lah"
+alias ll=la
+alias ld="ls -lah"
 alias nf="neofetch"
 alias cls=clear
 alias clsls="clear && ls"
