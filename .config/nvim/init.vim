@@ -8,6 +8,7 @@ call plug#begin("~/.config/nvim/plugins")
   Plug 'preservim/nerdtree'
   Plug 'lambdalisue/suda.vim'
   Plug 'tpope/vim-surround'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 set mouse=a
@@ -41,4 +42,9 @@ noremap <up> <C-w><up>
 noremap <down> <C-w><down>
 noremap <left> <C-w><left>
 noremap <right> <C-w><right>
+
+" coc.nvim deno
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
