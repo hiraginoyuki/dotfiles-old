@@ -7,6 +7,7 @@ alias clsls="clear && ls"
 alias cb="xsel --clipboard --input"
 alias dc=docker-compose
 alias dog=cat
+alias tl="tree|less"
 
 for i in {1..99}; do
   alias "awk$i=awk '{print \$$i}'"
@@ -50,7 +51,6 @@ fi
 alias t="tmux"
 alias ta="tmux attach"
 alias tk="tmux kill-server"
-alias tl="tmux ls"
 
 alias vz="vim ~/.zshrc"
 alias ve="vim ~/.zshrc.d/00-env.zsh"
