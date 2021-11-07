@@ -8,6 +8,7 @@ alias cb="xsel --clipboard --input"
 alias dc=docker-compose
 alias dog=cat
 alias tl="tree|less"
+alias tal="tree -a|less"
 
 for i in {1..99}; do
   alias "awk$i=awk '{print \$$i}'"
