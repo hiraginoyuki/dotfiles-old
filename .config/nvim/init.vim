@@ -2,6 +2,7 @@ runtime! plug.vim
 call plug#begin("~/.config/nvim/plugins")
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+  Plug 'leafgarland/typescript-vim'
   Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
@@ -43,8 +44,10 @@ noremap <down> <C-w><down>
 noremap <left> <C-w><left>
 noremap <right> <C-w><right>
 
-" coc.nvim deno
+" coc.nvim
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+noremap <C-p> :CocCommand<CR>
 
