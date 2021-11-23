@@ -34,14 +34,16 @@ if [[ -r /etc/arch-release ]]; then
   done
   if [[ $aur = pacman ]]; then
     if [[ ! -e ~/.aurignore ]] && read -q "REPLY?No AUR helper was found, do you want to install paru-bin from AUR? [y/N]: "; then
-      echo '\e[30;1mCloning\e[0m https://aur.archlinux.org/paru-bin.git \e[30;1m...\e[0m'
+      echo
+      echo '\n\e[30;1mCloning `\e[0mhttps://aur.archlinux.org/paru-bin.git\e[30;1m` into `\e[0m/tmp/paru\e[30;1m` ...\e[0m\n'
       git clone https://aur.archlinux.org/paru-bin.git /tmp/paru
       cd /tmp/paru
-      echo '\e[30;1mRunning\e[0m \e[30m`\e[0;1mmakepkg -si\e[0;30m` \e[30;1m...\e[0m'
-      makepkg -si
+      echo '\n\e[30;1mRunning `\e[0mmakepkg -si --noconfirm\e[30;1m` ...\e[0m\n'
+      makepkg -si --noconfirm
       cd ~
+      echo '\n\e[30;1mRemoving `\e[0m/tmp/paru\e[30;1m` ...\e[0m'
       rm -rf /tmp/paru
-      echo '\e[32;1mSuccess!\e[0m'
+      echo '\e[32;1mSuccess!\e[0m\n'
       aur=paru
     else
       touch ~/.aurignore
