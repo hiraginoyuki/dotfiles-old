@@ -32,21 +32,21 @@ if [[ -r /etc/arch-release ]]; then
       break
     fi
   done
-  if [[ $aur = pacman ]] && [ ! -e ~/.dfparuignore ]; then
-    if read -q "REPLY?no AUR helper was found, Do you want to install the AUR Helper(paru)? [y/N]: "; then
-      echo "\nInstalling..."
-      git clone https://aur.archlinux.org/paru-bin /tmp/paru
+  if [[ $aur = pacman ]]; then
+    if [[ ! -e ~/.aurignore ]] && read -q "REPLY?No AUR helper was found, do you want to install paru-bin from AUR? [y/N]: "; then
+      echo '\e[30;1mCloning\e[0m https://aur.archlinux.org/paru-bin.git \e[30;1m...\e[0m'
+      git clone https://aur.archlinux.org/paru-bin.git /tmp/paru
       cd /tmp/paru
+      echo '\e[30;1mRunning\e[0m \e[30m`\e[0;1mmakepkg -si\e[0;30m` \e[30;1m...\e[0m'
       makepkg -si
-      cd
+      cd ~
       rm -rf /tmp/paru
+      echo '\e[32;1mSuccess!\e[0m'
       aur=paru
     else
-      echo "Skip Install"
-      touch ~/.dfparuignore
+      touch ~/.aurignore
+      aur="$sudo $aur"
     fi
-
-    aur="$sudo $aur"
   fi
 
   alias u="${aur} -Syyu"
