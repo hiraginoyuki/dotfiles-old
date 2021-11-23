@@ -33,8 +33,22 @@ if [[ -r /etc/arch-release ]]; then
     fi
   done
   if [[ $aur = pacman ]]; then
-    echo "Using pacman, as no AUR helper was found."
-    aur="$sudo $aur"
+    if [[ ! -e ~/.aurignore ]] && read -q "REPLY?No AUR helper was found, do you want to install paru-bin from AUR? [y/N]: "; then
+      echo
+      echo '\n\e[30;1mCloning `\e[0mhttps://aur.archlinux.org/paru-bin.git\e[30;1m` into `\e[0m/tmp/paru\e[30;1m` ...\e[0m\n'
+      git clone https://aur.archlinux.org/paru-bin.git /tmp/paru
+      cd /tmp/paru
+      echo '\n\e[30;1mRunning `\e[0mmakepkg -si --noconfirm\e[30;1m` ...\e[0m\n'
+      makepkg -si --noconfirm
+      cd ~
+      echo '\n\e[30;1mRemoving `\e[0m/tmp/paru\e[30;1m` ...\e[0m'
+      rm -rf /tmp/paru
+      echo '\e[32;1mSuccess!\e[0m\n'
+      aur=paru
+    else
+      touch ~/.aurignore
+      aur="$sudo $aur"
+    fi
   fi
 
   alias u="${aur} -Syyu"
@@ -71,4 +85,3 @@ alias vp="vim ~/.config/nvim/init.d/plugins.vim"
 alias vt="vim ~/.tmux.conf"
 alias vs="sudo vim /etc/apt/sources.list"
 alias vsd="sudo vim /etc/apt/sources.list.d"
-
