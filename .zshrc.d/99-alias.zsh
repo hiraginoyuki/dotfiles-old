@@ -32,8 +32,20 @@ if [[ -r /etc/arch-release ]]; then
       break
     fi
   done
-  if [[ $aur = pacman ]]; then
-    echo "Using pacman, as no AUR helper was found."
+  if [[ $aur = pacman ]] && [ ! -e ~/.dfparuignore ]; then
+    if read -q "REPLY?no AUR helper was found, Do you want to install the AUR Helper(paru)? [y/N]: "; then
+      echo "\nInstalling..."
+      git clone https://aur.archlinux.org/paru-bin /tmp/paru
+      cd /tmp/paru
+      makepkg -si
+      cd
+      rm -rf /tmp/paru
+      aur=paru
+    else
+      echo "Skip Install"
+      touch ~/.dfparuignore
+    fi
+
     aur="$sudo $aur"
   fi
 
@@ -71,4 +83,3 @@ alias vp="vim ~/.config/nvim/init.d/plugins.vim"
 alias vt="vim ~/.tmux.conf"
 alias vs="sudo vim /etc/apt/sources.list"
 alias vsd="sudo vim /etc/apt/sources.list.d"
-
