@@ -1,3 +1,4 @@
+#!/bin/bash
 DOTPATH=~/.dotfiles
 
 entries="\
