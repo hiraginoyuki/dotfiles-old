@@ -10,8 +10,8 @@ zinit snippet OMZL::spectrum.zsh
 
 zplugin load zsh-users/zsh-autosuggestions
 zplugin load zsh-users/zsh-history-substring-search
-zplugin load zdharma/history-search-multi-word
-zplugin load zdharma/fast-syntax-highlighting
+zplugin load zdharma-continuum/history-search-multi-word
+zplugin load zdharma-continuum/fast-syntax-highlighting
 
 zinit snippet OMZP::git
 zinit snippet OMZP::history
