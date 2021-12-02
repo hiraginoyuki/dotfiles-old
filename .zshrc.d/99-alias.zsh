@@ -88,3 +88,5 @@ alias vt="vim ~/.tmux.conf"
 alias vs="sudo vim /etc/apt/sources.list"
 alias vsd="sudo vim /etc/apt/sources.list.d"
 alias vzp="vim ~/.zshrc.d/99-zplugin.zsh"
+alias xy="xargs -P16 -n1 youtube-dl"
+
