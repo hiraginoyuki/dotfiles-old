@@ -79,6 +79,7 @@ alias va="vim ~/.zshrc.d/99-alias.zsh"
 alias vb="vim ~/.zshrc.d/99-bind.zsh"
 
 alias svim="sudoedit"
+alias vi3="vim ~/.config/i3/config"
 alias vx="vim ~/.vnc/xstartup"
 alias vX="vim ~/.Xresources"
 alias vzd="vim ~/.zshrc.d/"
