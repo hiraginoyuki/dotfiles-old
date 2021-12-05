@@ -1,6 +1,7 @@
 alias ":q"=exit
 alias ":e"=vim
 alias reload="exec zsh"
+alias ls="ls --color=auto"
 alias la="ls -lah"
 alias ll=la
 alias ld="ls -lah"
@@ -15,6 +16,7 @@ alias tree="tree -C"
 alias tl="tree | less"
 alias tal="tree -a |less"
 alias gdc="git diff --compact-summary --diff-filter=d"
+alias grep="grep --color=auto"
 
 for i in {1..99}; do
   alias "awk$i=awk '{print \$$i}'"
