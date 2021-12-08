@@ -14,9 +14,9 @@ install_dvm() {
 }
 
 if [[ -d ~/.dvm ]]; then
-  export DENO_INSTALL="/home/yuki/.deno"
+  export DENO_INSTALL="$HOME/.deno"
   export PATH="$PATH:$DENO_INSTALL/bin"
-  export DVM_DIR="/home/yuki/.dvm"
+  export DVM_DIR="$HOME/.dvm"
   export PATH="$PATH:$DVM_DIR/bin"
 fi
 
