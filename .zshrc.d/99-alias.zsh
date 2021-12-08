@@ -28,7 +28,7 @@ fi
 if [[ -r /etc/arch-release ]]; then
   aur_helpers=(aurman aurutils pakku pikaur trizen yay paru bauerbill pkgbuilder aura repofish wrapaur aurget pacman)
 
-  for helper in $aur_helpers; do
+  for helper in $aur_helpers; do    
     if type $helper > /dev/null; then
       aur=$helper
       break
