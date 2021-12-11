@@ -9,7 +9,7 @@ install_dvm() {
   if [[ result -eq 0 ]]; then
     echo '\e[32;1mSuccess!\e[0m'
   else
-    echo '\e[31;1mSuccess!\e[0m'
+    echo '\e[31;1mFailed...\e[0m'
   fi
 }
 
