@@ -10,6 +10,7 @@ alias cls=clear
 alias clsls="clear && ls"
 alias cb="xsel --clipboard --input"
 alias dc=docker-compose
+alias downrm=docker-compose down --rmi all --volumes --remove-orphans
 alias dog=cat
 alias less="less -r"
 alias tree="tree -C"
