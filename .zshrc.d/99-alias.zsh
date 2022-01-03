@@ -38,7 +38,7 @@ if [[ -r /etc/arch-release ]]; then
     fi
   done
   if [[ $aur = pacman ]]; then
-    if [[ ! -e ~/.aurignore ]] && read -q "REPLY?No AUR helper was found, do you want to install paru-bin from AUR? [y/N]: "; then
+    if [[ ! -e ~/.dotfiles.aurignore ]] && read -q "REPLY?No AUR helper was found, do you want to install paru-bin from AUR? [y/N]: "; then
       echo
       echo '\n\e[30;1mCloning `\e[0mhttps://aur.archlinux.org/paru-bin.git\e[30;1m` into `\e[0m/tmp/paru\e[30;1m` ...\e[0m\n'
       git clone https://aur.archlinux.org/paru-bin.git /tmp/paru
@@ -51,7 +51,7 @@ if [[ -r /etc/arch-release ]]; then
       echo '\e[32;1mSuccess!\e[0m\n'
       aur=paru
     else
-      touch ~/.aurignore
+      touch ~/.dotfiles.aurignore
       aur="$sudo $aur"
     fi
   fi
