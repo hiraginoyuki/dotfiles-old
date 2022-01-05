@@ -8,3 +8,5 @@ for config in $HOME/.zshrc.d/*.zsh; do
 done
 [[ verbose =  1 ]] && echo "\e[35;1mDone.\e[0m"
 
+true
+
