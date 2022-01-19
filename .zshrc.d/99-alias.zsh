@@ -32,6 +32,7 @@ if [[ -f /etc/gentoo-release ]]; then
   alias -- "-av"="${sudo} emerge -av"
   alias -- "-W"="${sudo} emerge -W"
   alias -- "-c"="${sudo} emerge -c"
+  alias -- "-s"="${sudo} emerge -s"
   alias "@world"="${sudo} emerge -avuND --with-bdeps=y @world"
   type watch>/dev/null && type genlop>/dev/null && alias "wemerge"="watch -tcpn1 sudo genlop -c"
 elif [[ -f /etc/arch-release ]]; then
