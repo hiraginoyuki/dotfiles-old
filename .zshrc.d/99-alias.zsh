@@ -30,6 +30,7 @@ fi
 
 if [[ -f /etc/gentoo-release ]]; then
   alias -- "-av"="${sudo} emerge -av"
+  alias -- "-av1"="${sudo} emerge -av1"
   alias -- "-W"="${sudo} emerge -W"
   alias -- "-c"="${sudo} emerge -c"
   alias -- "-s"="emerge -s"
