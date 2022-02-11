@@ -1,7 +1,7 @@
 # https://ohmyz.sh
 
-local is_chroot=false
-diff /proc/{1,self}/mountinfo &>/dev/null
+is_chroot=false
+diff /proc/1/mountinfo /proc/self/mountinfo &>/dev/null
 [[ $? == 1 ]] && is_chroot=true
 
 PS1='$FG[008]╭╴ $($is_chroot&&echo "(chroot) ")%(!.$FG[009]$FX[blink].$FG[012])%n$FX[reset]$FG[008] @ $FG[012]%M$FG[008] in $FG[012]%~$FX[reset]
