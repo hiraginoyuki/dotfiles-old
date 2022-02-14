@@ -39,7 +39,7 @@ if [[ -f /etc/gentoo-release ]]; then
 elif [[ -f /etc/arch-release ]]; then
   aur_helpers=(aurman aurutils pakku pikaur trizen yay paru bauerbill pkgbuilder aura repofish wrapaur aurget pacman)
 
-  for helper in ${aur}_helpers; do
+  for helper in ${aur_helpers}; do
     if type ${helper} > /dev/null; then
       aur=${helper}
       break
