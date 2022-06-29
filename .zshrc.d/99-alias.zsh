@@ -103,5 +103,6 @@ alias vzp='vim ~/.zshrc.d/99-zplugin.zsh'
 alias xy='xargs -P16 -n1 youtube-dl'
 
 alias gf='git fetch -p --all'
+alias gpush='git push -u origin `git branch --show-current`'
 
 alias cu='corepack prepare {pnpm@$(npm view pnpm version),yarn@$(curl -s https://api.github.com/repos/yarnpkg/berry/releases/latest | jq -r .name)} --activate'
