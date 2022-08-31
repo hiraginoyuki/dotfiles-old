@@ -43,6 +43,7 @@ set {
 }
 
 cmd [[command W w]]
+cmd [[command Wq wq]]
 
 augroup 'PackerAutoCompile' {
   autocmd 'BufWritePost' { pattern = init_lua, command = 'PackerCompile' }
