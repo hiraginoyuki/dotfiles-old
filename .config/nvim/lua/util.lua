@@ -7,11 +7,11 @@ function util.set(opts)
 end
 
 function util.augroup(name)
-  local group = api.nvim_create_augroup(name, { clear = true })
+  local group = vim.api.nvim_create_augroup(name, { clear = true })
   return function(specs)
     for event, spec in pairs(specs) do
       spec.options.group = group
-      api.nvim_create_autocmd(spec.events, spec.options)
+      vim.api.nvim_create_autocmd(spec.events, spec.options)
     end
   end
 end
