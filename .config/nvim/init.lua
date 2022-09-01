@@ -1,19 +1,10 @@
-vim.g.loaded_2html_plugin = 1
-vim.g.loaded_gzip = 1
-vim.g.loaded_man = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_remote_plugins = 1
-vim.g.loaded_spellfile_plugin = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_tutor_mode_plugin = 1
-vim.g.loaded_zipPlugin = 1
+-- imports
+local util = require('util')
+local set, g = util.assign(vim.opt), util.assign(vim.g)
+local augroup, autocmd, command = util.augroup, util.autocmd, util.command
 
-util = require('util')
-set = util.set
-augroup, autocmd = util.augroup, util.autocmd
-cmd = vim.cmd
-stdpath = vim.fn.stdpath
-init_lua = stdpath('config')..'/init.lua'
+local cmd = vim.cmd
+local stdpath = vim.fn.stdpath
 
 require('packer_init').startup {{
   { 'wbthomason/packer.nvim' },
@@ -29,8 +20,36 @@ require('packer_init').startup {{
   { 'justinmk/vim-sneak' },
 
   { 'leafgarland/typescript-vim', ft = { 'js', 'jsx', 'ts', 'tsx' } },
-  { 'williamboman/mason.nvim' },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim", after = 'mason.nvim' },
+  { "neovim/nvim-lspconfig", after = 'mason-lspconfig.nvim',
+    config = function()
+      require('mason').setup()
+      require('mason-lspconfig').setup {
+        automatic_installation = true,
+        ensure_installed = {
+          'rust_analyzer',
+          'sumneko_lua',
+          'tsserver',
+        }
+      }
+      require('lspconfig').rust_analyzer.setup {}
+      require('lspconfig').sumneko_lua.setup {}
+      require('lspconfig').tsserver.setup {}
+    end },
 }}
+
+g {
+  loaded_2html_plugin = 1,
+  loaded_gzip = 1,
+  loaded_man = 1,
+  loaded_netrwPlugin = 1,
+  loaded_remote_plugins = 1,
+  loaded_spellfile_plugin = 1,
+  loaded_tarPlugin = 1,
+  loaded_tutor_mode_plugin = 1,
+  loaded_zipPlugin = 1,
+}
 
 set {
   mouse = 'a',
@@ -42,9 +61,11 @@ set {
   termguicolors = true,
 }
 
-cmd [[command W w]]
-cmd [[command Wq wq]]
+command 'W' 'w'
+command 'Q' 'q'
+command 'Wq' 'wq'
+command 'WQ' 'wq'
 
 augroup 'PackerAutoCompile' {
-  autocmd 'BufWritePost' { pattern = init_lua, command = 'PackerCompile' }
-} 
+  autocmd 'BufWritePost' { pattern = '*/nvim/init.lua', command = 'PackerCompile' }
+}

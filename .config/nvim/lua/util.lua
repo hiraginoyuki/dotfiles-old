@@ -1,14 +1,16 @@
 local util = {}
 
-function util.set(opts)
-  for key, value in pairs(opts) do
-    vim.opt[key] = value
+function util.assign(assignee)
+  return function(obj)
+    for key, value in pairs(obj) do
+      assignee[key] = value
+    end
   end
 end
 
 function util.augroup(name)
-  local group = vim.api.nvim_create_augroup(name, { clear = true })
   return function(specs)
+    local group = vim.api.nvim_create_augroup(name, { clear = true })
     for event, spec in pairs(specs) do
       spec.options.group = group
       vim.api.nvim_create_autocmd(spec.events, spec.options)
@@ -19,6 +21,12 @@ end
 function util.autocmd(events)
   return function(options)
     return { events=events, options=options }
+  end
+end
+
+function util.command(name)
+  return function(command)
+    vim.api.nvim_create_user_command(name, command, {})
   end
 end
 
