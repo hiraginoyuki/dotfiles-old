@@ -1,15 +1,17 @@
 -- imports
 local util = require('util')
 local set, g = util.assign(vim.opt), util.assign(vim.g)
-local augroup, autocmd, command = util.augroup, util.autocmd, util.command
-
-local cmd = vim.cmd
-local stdpath = vim.fn.stdpath
+local in_order = util.in_order
+local augroup, autocmd = util.augroup, util.autocmd
+local alias, command = util.alias, util.command
 
 require('packer_init').startup {{
   { 'wbthomason/packer.nvim' },
   { 'dstein64/vim-startuptime', cmd = 'StartupTime' },
   { 'nathom/filetype.nvim' },
+
+  -- UI
+  { 'ms-jpq/chadtree' },
 
   -- Appearance
   { 'arzg/vim-colors-xcode',
@@ -19,24 +21,34 @@ require('packer_init').startup {{
   { 'tpope/vim-surround' },
   { 'justinmk/vim-sneak' },
 
-  { 'leafgarland/typescript-vim', ft = { 'js', 'jsx', 'ts', 'tsx' } },
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim", after = 'mason.nvim' },
-  { "neovim/nvim-lspconfig", after = 'mason-lspconfig.nvim',
+  -- LSP stuff
+  in_order {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+    'ms-jpq/coq.artifacts',
+    'ms-jpq/coq_nvim',
+  } {
     config = function()
+      local servers = {
+        'rust_analyzer',
+        'sumneko_lua',
+        'tsserver',
+      }
+
       require('mason').setup()
       require('mason-lspconfig').setup {
         automatic_installation = true,
-        ensure_installed = {
-          'rust_analyzer',
-          'sumneko_lua',
-          'tsserver',
-        }
+        ensure_installed = servers
       }
-      require('lspconfig').rust_analyzer.setup {}
-      require('lspconfig').sumneko_lua.setup {}
-      require('lspconfig').tsserver.setup {}
-    end },
+
+      local lsp = require('lspconfig')
+      local coq = require('coq')
+      for _, server in ipairs(servers) do
+        lsp[server].setup(coq.lsp_ensure_capabilities {})
+      end
+    end
+  },
 }}
 
 g {
@@ -54,17 +66,34 @@ g {
 set {
   mouse = 'a',
   number = true,
+  relativenumber = true,
   expandtab = true,
   tabstop = 2,
   shiftwidth = 2,
   scrolloff = 2,
   termguicolors = true,
+  completeopt = "menu,menuone,noselect",
 }
 
-command 'W' 'w'
-command 'Q' 'q'
-command 'Wq' 'wq'
-command 'WQ' 'wq'
+alias 'W' 'w'
+alias 'Q' 'q'
+alias 'Wq' 'wq'
+alias 'WQ' 'wq'
+
+vim.keymap.set('n', '<Left>', '<C-w>h', { remap = false })
+vim.keymap.set('n', '<Down>', '<C-w>j', { remap = false })
+vim.keymap.set('n', '<Up>', '<C-w>k', { remap = false })
+vim.keymap.set('n', '<Right>', '<C-w>l', { remap = false })
+
+-- Centering
+vim.keymap.set({'n', 'i'}, '<C-c>', function() set { scrolloff = 999 - vim.opt.scrolloff:get() } end, { remap = false })
+
+-- LSP
+vim.keymap.set('n', '<C-k>', vim.lsp.buf.code_action, { remap = false })
+vim.keymap.set('n', '<S-k>', vim.lsp.buf.hover, { remap = false })
+
+-- CHADtree
+vim.keymap.set('n', '<Space>f', ':CHADopen<CR>', { silent = true, remap = false })
 
 augroup 'PackerAutoCompile' {
   autocmd 'BufWritePost' { pattern = '*/nvim/init.lua', command = 'PackerCompile' }
