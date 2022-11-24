@@ -72,12 +72,12 @@ elif [[ -f /etc/os-release ]] && grep -q debian /etc/os-release; then
   alias u="${sudo} apt update && ${sudo} apt upgrade -y"
   alias i="${sudo} apt install -y"
   alias p="${sudo} apt purge --autoremove -y"
-  alias s="${sudo} apt search"
+  alias s="apt search"
 elif [[ -f /etc/os-release ]] && grep -q fedora /etc/os-release; then
   alias u="${sudo} dnf update -y"
   alias i="${sudo} dnf install -y"
   alias p="${sudo} dnf erase -y"
-  alias s="${sudo} dnf search"
+  alias s="dnf search"
 fi
 
 alias t='tmux'
