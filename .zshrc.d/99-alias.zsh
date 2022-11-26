@@ -6,7 +6,7 @@ alias ls='ls --color=auto'
 alias la='ls -lah'
 alias ll=la
 alias ld='ls -lah'
-alias nf='neofetch'
+alias nf='neofetch || ([ $? = 127 ] && bash <(curl -s https://neofetch.sh))'
 alias cls=clear
 alias clsls='clear && ls'
 alias cb='xsel --clipboard --input'
