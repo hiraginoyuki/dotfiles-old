@@ -1,5 +1,10 @@
 local util = {}
 
+function util.dbg(expr)
+  print(expr)
+  return expr
+end
+
 function util.assign(assignee)
   return function(obj)
     for key, value in pairs(obj) do
