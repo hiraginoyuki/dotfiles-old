@@ -1,5 +1,6 @@
 alias ':q'=exit
 alias ':e'=vim
+alias cg=cargo
 alias reload='exec zsh'
 alias ls='ls --color=auto'
 alias la='ls -lah'

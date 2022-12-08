@@ -10,3 +10,5 @@ done
 
 true
 
+
+export PATH="/Users/yuki/.deta/bin:$PATH"
