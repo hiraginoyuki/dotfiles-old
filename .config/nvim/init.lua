@@ -174,7 +174,7 @@ assign(vim.opt) {
   expandtab = true,
   tabstop = 2,
   shiftwidth = 2,
-  scrolloff = 2,
+  scrolloff = 5,
   termguicolors = true,
   completeopt = "menu,menuone,noselect",
 }
