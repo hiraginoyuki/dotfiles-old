@@ -9,6 +9,9 @@ require('packer_init').startup {{
   { 'dstein64/vim-startuptime', cmd = 'StartupTime' },
   { 'nathom/filetype.nvim' },
 
+  -- Git
+  { 'tpope/vim-fugitive' },
+
   -- Training
   { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
 
