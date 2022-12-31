@@ -7,6 +7,7 @@ alias la='ls -lah'
 alias ll=la
 alias ld='ls -lah'
 alias nf='neofetch'
+alias sf='screenfetch || ([ $? = 127 ] && bash <(curl -sL https://git.io/vaHfR))'
 alias cls=clear
 alias clsls='clear && ls'
 alias cb='xsel --clipboard --input'
