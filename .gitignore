@@ -1,2 +1,4 @@
 .config/nvim/plugin
 .config/nvim/.netrwhist
+.cargo/*
+!.cargo/config.toml
