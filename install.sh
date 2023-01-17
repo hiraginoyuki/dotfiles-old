@@ -6,6 +6,7 @@ entries="\
 	.zshrc.d \
 	.tmux.conf \
 	.config/nvim \
+  .cargo/config.toml \
 "
 
 for f in $entries; do
