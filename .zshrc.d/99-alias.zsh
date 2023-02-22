@@ -106,4 +106,6 @@ alias xy='xargs -P16 -n1 youtube-dl'
 alias gf='git fetch -p --all'
 alias gpush='git push -u origin `git branch --show-current`'
 
+alias buildup='dc up --build -d'
+
 alias cu='corepack prepare {npm@$(corepack npm@latest --version),pnpm@$(corepack pnpm@latest --version),yarn@$(corepack yarn@stable --version)} --activate'
