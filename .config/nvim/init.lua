@@ -85,7 +85,7 @@ require('packer_init').startup {{
         automatic_installation = true,
         ensure_installed = {
           'rust_analyzer',
-          'sumneko_lua',
+          'lua_ls',
           'tsserver',
         },
       }
