@@ -13,13 +13,14 @@ alias clsls='clear && ls'
 alias cb='xsel --clipboard --input'
 type docker-compose > /dev/null && alias dc=docker-compose || alias dc='docker compose'
 alias downrm='docker-compose down --rmi all --volumes --remove-orphans'
-alias dog=cat
 alias less='less -r'
 alias tree='tree -C'
 alias tl='tree | less'
 alias tal='tree -a |less'
 alias gdc='git diff --compact-summary --diff-filter=d'
 alias grep='grep --color=auto'
+alias dog=cat
+alias paruma=paru
 
 for i in {1..99}; do
   alias "awk${i}"="awk '{print \$${i}}'"
